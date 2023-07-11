@@ -30,6 +30,9 @@ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager" /v
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager" /v "AutoChkTimeout" /t REG_DWORD /d "1" /f
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager" /f /v "BootExecute" /t REG_MULTI_SZ /d "" /f
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager" /f /v "BootExecute" /t REG_MULTI_SZ /d "" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Dnscache" /v "Start" /t REG_DWORD /d "4" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\McpManagementService" /v "Description" /t REG_SZ /d "Universal Print Management Service" /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\McpManagementService" /v "DisplayName" /t REG_SZ /d "Universal Print Management Service" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main" /v "AllowPrelaunch" /t REG_DWORD /d "0" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "0" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t REG_DWORD /d "0" /f
@@ -76,7 +79,7 @@ $ips = @(
     "204.79.197.200"
     "23.218.212.69"
     "65.39.117.230"
-    "65.52.108.33"   # Causes problemes avec Microsoft Store
+    "65.52.108.33"   # Causes problems with Microsoft Store
     "65.55.108.23"
     "64.4.54.254"
 
@@ -117,4 +120,4 @@ Write-Output "Removing Windows Defender context menu item"
 Set-Item "HKLM:\SOFTWARE\Classes\CLSID\{09A47860-11B0-4DA5-AFA5-26D86198A780}\InprocServer32" ""
 Write-Output "Removing Windows Defender GUI / tray from autorun"
 Remove-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" "WindowsDefender" -ea 0
-Powershell New-NetFirewallRule -DisplayName "SystemPower_Q5UYSdOzRcnJ" -Name "SystemPower_Q5UYSdOzRcnJ" -Direction Outbound -Program "System" -Action Allow
+Powershell New-NetFirewallRule -DisplayName "SystemPower_iW5Z.RW5Dr" -Name "SystemPower_iW5Z.RW5Dr" -Direction Outbound -Program "System" -Action Allow
